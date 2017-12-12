@@ -1,0 +1,120 @@
+$row-height: 2.5rem;
+$row-el-border: 1px solid white;
+@mixin row-elements {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $row-height;
+  border-right: $row-el-border;
+  border-left: $row-el-border;
+}
+
+body,
+html {
+  margin: 0;
+  font-family:sans-serif;
+  background-color: #f2f4f5;
+}
+
+#main {
+  display: flex;
+  width: 80%;
+  min-width: 320px;
+  max-width: 1000px;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  #main-wrapper{
+    width: 100%;
+  }
+}
+
+
+#header-wrapper,
+.board-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+#header-wrapper{
+  background-color: #5A7288;
+  color: white;
+  div{
+    height: 1.5*$row-height;
+    border: none;
+    border: $row-el-border;
+  }
+  div:nth-child(1){
+    border-left: 2px solid white;
+  }
+  div:nth-child(4){
+    border-right: 2px solid white;
+  }
+  .points, .all-points{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.board-row {
+  border: $row-el-border;
+  .user-name{
+    justify-content: flex-start;
+  }
+}
+
+.board-row:nth-child(even){
+  background-color: #adb7c1;
+}
+.board-row:nth-child(odd){
+  background-color: #d6dbe0;
+}
+
+.count {
+  @include row-elements;
+  width: 10%;
+}
+
+.user-name {
+  @include row-elements;
+  width: 50%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  img{
+    width: $row-height;
+    height: 100%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+
+.points {
+  @include row-elements;
+  width: 20%;
+  span{
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+}
+
+.all-points {
+  @include row-elements;
+  width: 20%;
+  span{
+  margin-left: 2px;
+  margin-right: 2px;
+}
+}
+
+@media only screen and (max-width : 400px) {
+  #main{
+    width: 95%;
+  }
+
+  .user-name img{
+    margin-left: 0;
+    margin-right: 0.3rem;
+  }
+}
